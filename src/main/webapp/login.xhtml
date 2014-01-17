@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>CDI Sample App - Login</title>
+    </head>
+    <body>
+        <f:view>
+            <h:messages style="color: red" />
+            <h:form>
+                <h:panelGrid columns="2" rendered="#{!login.loggedIn}">
+                    <h:outputLabel for="username">Username:</h:outputLabel>
+                    <h:inputText id="username" value="#{credentials.username}" />
+                    <h:outputLabel for="password">Password:</h:outputLabel>
+                    <h:inputSecret id="password" value="#{credentials.password}" />
+                </h:panelGrid>
+                <h:commandButton value="Login" action="#{login.login()}"
+                                 rendered="#{!login.loggedIn}" />
+            </h:form>
+        </f:view>
+    </body>
+</html>

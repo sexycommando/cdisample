@@ -1,0 +1,25 @@
+drop table users;
+create table users (
+    username          varchar(128) NOT NULL,
+    password          varchar(128) NOT NULL,
+    banned            decimal(1,0) NOT NULL,
+    CONSTRAINT users_pk PRIMARY KEY (username)
+);
+
+drop table permissions;
+create table permissions (
+    id            varchar(10) NOT NULL,
+    username      varchar(128) NOT NULL,
+    action        varchar(128) NOT NULL,
+    datatype      varchar(128) NOT NULL,
+    CONSTRAINT permissions_pk PRIMARY KEY (id)
+);
+
+drop table documents;
+create table documents (
+    id            varchar(10) NOT NULL,
+    title         varchar(128) NOT NULL,
+    text          varchar(255) NOT NULL,
+    createdby     varchar(128) NOT NULL,
+    CONSTRAINT documents_pk PRIMARY KEY (id)
+);

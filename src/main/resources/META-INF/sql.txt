@@ -1,0 +1,45 @@
+-- Creating the schema
+CREATE USER cdi IDENTIFIED BY cdi;
+
+-- Grant the permissions to the user.
+GRANT RESOURCE, CONNECT TO cdi;
+
+
+drop table users;
+create table users (
+    username          varchar2(20) NOT NULL,
+    password          varchar2(20) NOT NULL,
+    banned            number(1,0) NOT NULL,
+    CONSTRAINT users_pk PRIMARY KEY (username)
+);
+
+drop table permissions;
+create table permissions (
+    id            varchar2(10) NOT NULL,
+    username      varchar2(20) NOT NULL,
+    action        varchar2(20) NOT NULL,
+    datatype      varchar2(100) NOT NULL,
+    CONSTRAINT permissions_pk PRIMARY KEY (id)
+);
+
+drop table documents;
+create table documents (
+    id            varchar2(10) NOT NULL,
+    title         varchar2(50) NOT NULL,
+    text          varchar2(255) NOT NULL,
+    createdby     varchar2(20) NOT NULL,
+    CONSTRAINT documents_pk PRIMARY KEY (id)
+);
+
+
+insert into users values ('duke','welcome1', 0);
+insert into users values ('candy','welcome1', 0);
+insert into users values ('oracle','welcome1', 1);
+
+insert into permissions values ('1', 'duke','save', 'cdisample.entity.Document');
+insert into permissions values ('2', 'duke','delete', 'cdisample.entity.Document');
+insert into permissions values ('3', 'candy','save', 'cdisample.entity.Document');
+
+
+commit;
+
